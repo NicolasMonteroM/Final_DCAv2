@@ -22,12 +22,11 @@ public class Logic {
 	private ArrayList<Enemie> enemies2;
 	private ArrayList<Enemie> enemies1;
 	private File dataPuntajes;
-	private String [] arrayStrings;
-	private String [] array2;
+	private String[] arrayStrings;
+	private String[] array2;
 
 	private String nickname, date;
 	private int score, time;
-
 
 	public Logic(PApplet app) {
 		this.app = app;
@@ -35,12 +34,11 @@ public class Logic {
 		playerList = new ArrayList<Player>();
 		playerList2 = new ArrayList<Player>();
 
-		
 		for (int i = 0; i < arrayStrings.length; i++) {
-			//System.out.println(arrayStrings[i]);
+			// System.out.println(arrayStrings[i]);
 			String lineString = arrayStrings[i];
-			String [] players = lineString.split(",");
-			
+			String[] players = lineString.split(",");
+
 			for (int j = 0; j < players.length; j++) {
 				nickname = players[0];
 				score = Integer.parseInt(players[1]);
@@ -48,13 +46,11 @@ public class Logic {
 				date = players[3];
 
 			}
-			
-			playerList2.add(new Player(nickname, score, time, date,app));
+
+			playerList2.add(new Player(nickname, score, time, date, app));
 			naturalOrder();
 		}
-		
-		
-		
+
 		enemies = new ArrayList<Enemie>();
 		enemies2 = new ArrayList<Enemie>();
 		enemies1 = new ArrayList<Enemie>();
@@ -70,14 +66,14 @@ public class Logic {
 
 		// lvl 1
 
-		enemies1.add(new EvilDot(app, 50, 50));
-		enemies1.add(new EvilDot(app, 55, 50));
-		enemies1.add(new EvilDot(app, 60, 50));
-		enemies1.add(new EvilDot(app, 65, 50));
-		enemies1.add(new EvilDot(app, 70, 50));
-		enemies1.add(new Cube(app, 100, 60, 20, 20));
-		enemies1.add(new Cube(app, 120, 60, 20, 20));
-		enemies1.add(new Cube(app, 140, 60, 20, 20));
+		enemies1.add(new EvilDot(app, 70 + 40, 350));
+		enemies1.add(new EvilDot(app, 70 + 80, 380));
+		enemies1.add(new EvilDot(app, 70 + 120, 390));
+		enemies1.add(new EvilDot(app, 70 + 160, 410));
+		enemies1.add(new EvilDot(app, 70 + 200, 420));
+		enemies1.add(new Cube(app, 300, 300, 20, 20));
+		enemies1.add(new Cube(app, 360, 300, 20, 20));
+		enemies1.add(new Cube(app, 440, 300, 20, 20));
 
 		// lvl 2
 		/*
@@ -95,17 +91,61 @@ public class Logic {
 
 	}
 
+	public void checkContact() {
+
+		/*
+		for (Enemie e : enemies) {
+
+			if (e.collide(personaje.posPersonaje)) {
+
+				personaje.setLives(personaje.getLives() - 1);
+
+				System.out.println(personaje.getLives());
+			}
+
+		}*/
+
+		for (int i = 0; i < enemies1.size(); i++) {
+
+			int enemieX = enemies1.get(i).getPosX();
+			int enemieY = enemies1.get(i).getPosY();
+			// int playerX = (int) personaje.getPosX();
+			// int playerY = (int) personaje.getPosY();
+
+			/*
+			 * if (app.dist(enemieX, enemieY, playerX, playerY) < 5) {
+			 * 
+			 * System.out.println("chocaaaan");
+			 * 
+			 * }
+			 */
+
+		}
+
+	}
+
+	/*
+	 * public void dieVoid() {
+	 * 
+	 * if(personaje.posPersonaje.y > app.height) {
+	 * 
+	 * personaje.set(43, 376, 50);
+	 * 
+	 * } }
+	 */
+
 	public void drawEnemies() {
 
 		for (Enemie e : enemies1) {
 
 			e.drawEnemie();
 
+			Thread enemieMovement = new Thread(e);
+			enemieMovement.start();
+
 		}
 
 	}
-
-	
 
 	public void naturalOrder() {
 		Collections.sort(playerList2);
@@ -113,14 +153,14 @@ public class Logic {
 	}
 
 	public void drawLeaders() {
-		
+
 		for (int i = 0; i < 5; i++) {
 			app.fill(255);
-			app.text(playerList2.get(i).getNickname(), 130,200 + (i * 30));
-			app.text(playerList2.get(i).getScore(), 280,200 + (i * 30));
-			app.text(playerList2.get(i).getTime(), 430,200 + (i * 30));
-			app.text(playerList2.get(i).getDate(), 580,200 + (i * 30));
+			app.text(playerList2.get(i).getNickname(), 130, 200 + (i * 30));
+			app.text(playerList2.get(i).getScore(), 280, 200 + (i * 30));
+			app.text(playerList2.get(i).getTime(), 430, 200 + (i * 30));
+			app.text(playerList2.get(i).getDate(), 580, 200 + (i * 30));
 
-					}
+		}
 	}
 }

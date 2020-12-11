@@ -25,6 +25,8 @@ public class Controller {
 	
 	public void drawGame() {
 		logic.drawEnemies();
+		//logic.checkContact();
+	//	logic.dieVoid();
 		
 	}
 

@@ -5,11 +5,13 @@ import processing.core.PApplet;
 public class Cube extends Enemie{
 	
 	protected int sizeX, sizeY;
+	protected float h;
 
 	public Cube(PApplet app, int posX, int posY, int sizeX, int sizeY) {
 		super(app, posX, posY);
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
+		this.h = 0;
 	}
 
 	@Override
@@ -26,7 +28,13 @@ public class Cube extends Enemie{
 	
 	@Override
 	public void drawEnemie(){
-		app.fill(255);
+		if (h > 360) {
+			h = 0;
+		}
+
+		h += 2;
+
+		app.fill(h, 360, 360);
 		app.noStroke();
 		app.rect(posX, posY, sizeX, sizeY);
 		
