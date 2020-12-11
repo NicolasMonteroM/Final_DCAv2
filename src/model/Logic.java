@@ -71,9 +71,9 @@ public class Logic {
 		enemies1.add(new EvilDot(app, 70 + 120, 390));
 		enemies1.add(new EvilDot(app, 70 + 160, 410));
 		enemies1.add(new EvilDot(app, 70 + 200, 420));
-		enemies1.add(new Cube(app, 300, 300, 20, 20));
-		enemies1.add(new Cube(app, 360, 300, 20, 20));
-		enemies1.add(new Cube(app, 440, 300, 20, 20));
+		enemies1.add(new Cube(app, 300, 200, 20, 20));
+		enemies1.add(new Cube(app, 360, 350, 20, 20));
+		enemies1.add(new Cube(app, 440, 280, 20, 20));
 
 		// lvl 2
 		/*
