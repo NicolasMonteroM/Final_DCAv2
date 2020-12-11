@@ -15,11 +15,18 @@ public class Player implements Comparable<Player> {
 		this.app= app;
 		time = 0;
 		//time = (int) app.millis()/1000;
-		date = getDate();
+		date = getDateNow();
 		score = 0;
 	}
 	
-	public Player(String nicknames, int scores, int times, String dates) {
+	public Player(String nickname, int score, int time, String date, PApplet app) {
+		this.app=app;
+		this.nickname = nickname;
+		this.score = score;
+		this.time = time;
+		this.date = date;
+
+
 
 	}
 
@@ -32,8 +39,8 @@ public class Player implements Comparable<Player> {
 		this.nickname = nickname;
 	}
 
-	public String getDate() {
-		dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+	public String getDateNow() {
+		dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
 	}
@@ -51,6 +58,9 @@ public class Player implements Comparable<Player> {
 		app.text("TIME" + time + "s", 500, 120);
 	}
 	
+	public String getDate() {
+		return date;
+	}
 	public int getScore() {
 		return score;
 	}

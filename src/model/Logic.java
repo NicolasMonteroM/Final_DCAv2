@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,33 +16,47 @@ public class Logic {
 
 	private PApplet app;
 	private ArrayList<Player> playerList;
+	private ArrayList<Player> playerList2;
 
 	private ArrayList<Enemie> enemies;
 	private ArrayList<Enemie> enemies2;
 	private ArrayList<Enemie> enemies1;
 	private File dataPuntajes;
 	private String [] arrayStrings;
+	private String [] array2;
+
+	private String nickname, date;
+	private int score, time;
+
 
 	public Logic(PApplet app) {
 		this.app = app;
 		arrayStrings = app.loadStrings("../data/dataPuntajes.txt");
 		playerList = new ArrayList<Player>();
-		
-		for (int i = 0; i < arrayStrings.length; i++) {
-			String lineString = arrayStrings[i];
-			String [] arrayWord = lineString.split(" ");
-			Player p = null;
-		}
-		
-		for (int i = 0; i < arrayStrings.length; i++) {
-			String[] player = arrayStrings[i].split(","); // separar por comas
-			String nickname = player[0];
-			int score = Integer.parseInt(player[1]);
-			int time = Integer.parseInt(player[2]);
-			String date = player[3];
-			playerList.add(new Player(nickname, score, time, date));
+		playerList2 = new ArrayList<Player>();
 
+		
+		for (int i = 0; i < arrayStrings.length; i++) {
+			//System.out.println(arrayStrings[i]);
+			String lineString = arrayStrings[i];
+			String [] players = lineString.split(",");
+			
+			for (int j = 0; j < players.length; j++) {
+
+
+				nickname = players[0];
+				score = Integer.parseInt(players[1]);
+				time = Integer.parseInt(players[2]);
+				date = players[3];
+				System.out.println(players[j]);
+
+				//System.out.println(playerList2.get(j));
+			}
+			
+			playerList2.add(new Player(nickname, score, time, date,app));
 		}
+		
+		
 		
 		enemies = new ArrayList<Enemie>();
 		enemies2 = new ArrayList<Enemie>();
@@ -96,16 +111,19 @@ public class Logic {
 	
 
 	public void naturalOrder() {
-		Collections.sort(playerList);
+		Collections.sort(playerList2);
 
 	}
 
 	public void drawLeaders() {
 		
-		for (int i = 0; i < playerList.size(); i++) {
-			app.fill(0);
-			app.text(playerList.get(i).getNickname() + "                                    " + playerList.get(i).getScore() + "                                    " + 
-			playerList.get(i).getTime() + "                                    " + playerList.get(i).getDate(), 100,100 + (i * 20));
-		}
+		for (int i = 0; i < 5; i++) {
+			app.fill(255);
+			app.text(playerList2.get(i).getNickname(), 130,200 + (i * 30));
+			app.text(playerList2.get(i).getScore(), 280,200 + (i * 30));
+			app.text(playerList2.get(i).getTime(), 430,200 + (i * 30));
+			app.text(playerList2.get(i).getDate(), 580,200 + (i * 30));
+
+					}
 	}
 }
