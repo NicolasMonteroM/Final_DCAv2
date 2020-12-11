@@ -3,6 +3,8 @@ package view;
 import controlP5.ControlP5;
 import controlP5.Textfield;
 import controller.Controller;
+import exceptions.NotANicknameException;
+import exceptions.UnvalidNickname;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -14,11 +16,14 @@ public class Register {
 	private ControlP5 cp5;
 	private String nickname;
 	private boolean canStart = true, start = false;
+	private String[] inputs;
+
 
 	public Register(PApplet app) {
 		this.app = app;
 		register = app.loadImage("Register.png");
 		cp5 = new ControlP5(app);
+
 
 		cp5.addTextfield("Nickname").setPosition(285, 279).setSize(211, 33).setAutoClear(true)
 				.setColorActive(app.color(0, 0, 0, 1)).setColorBackground(app.color(0, 0, 0))
@@ -36,12 +41,13 @@ public class Register {
 
 	}
 
+
 	public void drawScreen() {
 		app.image(register, 0, 0);
 
 	}
 
-	public void registerNewPlayer() {
+	public void registerNewPlayer() throws UnvalidNickname, NotANicknameException{
 		if (app.mouseX > 350 && app.mouseX < 420 && app.mouseY > 330 && app.mouseY < 360) {
 			start = true;
 			nickname = cp5.get(Textfield.class, "Nickname").getText();
@@ -50,17 +56,35 @@ public class Register {
 			if (!nickname.equals("")) {
 				cp5.get(Textfield.class, "Nickname").setText("");
 				canStart = true;
-				// controller.newPlayer(nickname, app);
+				//controller.newPlayer(nickname, app);
 
 			}
+			
 		}
+		if (app.mouseX > 350 && app.mouseX < 420 && app.mouseY > 330 && app.mouseY < 360 && nickname.equals("")) {
+			start=false;
+			app.text("NOPE", 370, 80);
+
+			throw new UnvalidNickname();
+
+			}
+		if (app.mouseX > 350 && app.mouseX < 420 && app.mouseY > 330 && app.mouseY < 360 && nickname.equals("Your nickname")) {
+			start=false;
+			app.text("NOPE", 370, 80);
+
+			throw new NotANicknameException();
+			}
+		
 	}
 
 	public String changeScreen() {
 		String screen = "register";
+		
 
 		if (app.mousePressed && start && canStart) {
 			screen = "level 1";
+		}else {
+			screen = "register";
 		}
 
 		if (app.mousePressed && app.mouseX > 333 && app.mouseX < 438 && app.mouseY > 365 && app.mouseY < 395) {

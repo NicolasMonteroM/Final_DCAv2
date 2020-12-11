@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 
+import exceptions.NotANicknameException;
+import exceptions.UnvalidNickname;
 import processing.core.PApplet;
 import processing.core.PFont;
 
@@ -202,6 +204,15 @@ public class Main extends PApplet{
 	}
 
 	public void mousePressed() {
-		register.registerNewPlayer();
+		try {
+			register.registerNewPlayer();
+		} catch (UnvalidNickname e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotANicknameException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
