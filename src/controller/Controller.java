@@ -13,8 +13,8 @@ public class Controller {
 
 	}
 
-	public void newPlayer(String nickname, PApplet app) {
-		logic.createPlayer(nickname, app);
+	public void newPlayer(String nickname) {
+		logic.createPlayer(nickname);
 
 	}
 

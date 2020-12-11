@@ -54,9 +54,9 @@ public class Register {
 			// System.out.println(nickname);
 
 			if (!nickname.equals("")) {
+				controller.newPlayer(nickname);
 				cp5.get(Textfield.class, "Nickname").setText("");
 				canStart = true;
-				//controller.newPlayer(nickname, app);
 
 			}
 			

@@ -13,7 +13,8 @@ public class Player implements Comparable<Player> {
 	
 	public Player(String nickname, PApplet app) {
 		this.app= app;
-		time = (int) app.millis()/1000;
+		time = 0;
+		//time = (int) app.millis()/1000;
 		date = getDate();
 		score = 0;
 	}

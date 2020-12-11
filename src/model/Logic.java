@@ -23,7 +23,7 @@ public class Logic {
 		enemies1 = new ArrayList<Enemie>();
 	}
 
-	public void createPlayer(String nickname, PApplet app) {
+	public void createPlayer(String nickname) {
 		Player newPlayer = new Player(nickname, app);
 		playerList.add(newPlayer);
 
