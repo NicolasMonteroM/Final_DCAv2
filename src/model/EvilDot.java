@@ -1,15 +1,41 @@
 package model;
 
-public class EvilDot extends Enemie{
+import processing.core.PApplet;
 
-	public EvilDot() {
-		// TODO Auto-generated constructor stub
+public class EvilDot extends Enemie {
+
+	protected int size;
+
+	public EvilDot(PApplet app, int posX, int posY) {
+		super(app, posX, posY);
+		this.size = 5;
+
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+
+
+	}
+
+	@Override
+	public void movement() {
+
+	}
+	
+	@Override
+	public void drawEnemie() {
+		app.fill(255);
+		app.noStroke();
+		app.ellipse(posX, posY, size, size);
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 }

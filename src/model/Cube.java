@@ -1,9 +1,15 @@
 package model;
 
-public class Cube extends Enemie{
+import processing.core.PApplet;
 
-	public Cube() {
-		// TODO Auto-generated constructor stub
+public class Cube extends Enemie{
+	
+	protected int sizeX, sizeY;
+
+	public Cube(PApplet app, int posX, int posY, int sizeX, int sizeY) {
+		super(app, posX, posY);
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
 	}
 
 	@Override
@@ -11,5 +17,36 @@ public class Cube extends Enemie{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void movement(){
+		
+		
+	}
+	
+	@Override
+	public void drawEnemie(){
+		app.fill(255);
+		app.noStroke();
+		app.rect(posX, posY, sizeX, sizeY);
+		
+	}
+	
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
+	}
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
+
 
 }

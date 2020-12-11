@@ -8,7 +8,7 @@ public abstract class Enemie implements Runnable{
 	
 	protected PApplet app;
 
-	public Enemie(int posX, int posY) {
+	public Enemie(PApplet app, int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
 		this.app = app;

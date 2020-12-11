@@ -17,6 +17,16 @@ public class Controller {
 		logic.createPlayer(nickname);
 
 	}
+	
+	public void createGame() {
+		logic.createEnemies();
+		
+	}
+	
+	public void drawGame() {
+		logic.drawEnemies();
+		
+	}
 
 	public void naturalOrder() {
 		logic.naturalOrder();

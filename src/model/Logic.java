@@ -33,36 +33,38 @@ public class Logic {
 
 		// lvl 1
 
-		enemies1.add(new EvilDot());
-		enemies1.add(new EvilDot());
-		enemies1.add(new EvilDot());
-		enemies1.add(new EvilDot());
-		enemies1.add(new EvilDot());
-		enemies1.add(new Cube());
-		enemies1.add(new Cube());
-		enemies1.add(new Cube());
+		enemies1.add(new EvilDot(app, 50, 50));
+		enemies1.add(new EvilDot(app, 55, 50));
+		enemies1.add(new EvilDot(app, 60, 50));
+		enemies1.add(new EvilDot(app, 65, 50));
+		enemies1.add(new EvilDot(app, 70, 50));
+		enemies1.add(new Cube(app, 100, 60, 20, 20));
+		enemies1.add(new Cube(app, 120, 60, 20, 20));
+		enemies1.add(new Cube(app, 140, 60, 20, 20));
 
 		// lvl 2
+		/*
+		 * enemies2.add(new EvilDot()); enemies2.add(new EvilDot()); enemies2.add(new
+		 * EvilDot()); enemies2.add(new EvilDot()); enemies2.add(new EvilDot());
+		 * enemies2.add(new Cube()); enemies2.add(new Cube()); enemies2.add(new Cube());
+		 */
 
-		enemies2.add(new EvilDot());
-		enemies2.add(new EvilDot());
-		enemies2.add(new EvilDot());
-		enemies2.add(new EvilDot());
-		enemies2.add(new EvilDot());
-		enemies2.add(new Cube());
-		enemies2.add(new Cube());
-		enemies2.add(new Cube());
-		
 		// lvl 3
+		/*
+		 * enemies.add(new EvilDot()); enemies.add(new EvilDot()); enemies.add(new
+		 * EvilDot()); enemies.add(new EvilDot()); enemies.add(new EvilDot());
+		 * enemies.add(new Cube()); enemies.add(new Cube()); enemies.add(new Cube());
+		 */
 
-		enemies.add(new EvilDot());
-		enemies.add(new EvilDot());
-		enemies.add(new EvilDot());
-		enemies.add(new EvilDot());
-		enemies.add(new EvilDot());
-		enemies.add(new Cube());
-		enemies.add(new Cube());
-		enemies.add(new Cube());
+	}
+
+	public void drawEnemies() {
+
+		for (Enemie e : enemies1) {
+			
+			e.drawEnemie();
+
+		}
 
 	}
 

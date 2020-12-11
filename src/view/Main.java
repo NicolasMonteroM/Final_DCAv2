@@ -2,6 +2,7 @@ package view;
 
 import java.util.ArrayList;
 
+import controller.Controller;
 import exceptions.NotANicknameException;
 import exceptions.UnvalidNickname;
 import processing.core.PApplet;
@@ -12,6 +13,7 @@ public class Main extends PApplet{
 	PFont font;
 	private Register register;
 	private Leaderboard leaderboard;
+	private Controller controller;
 
 	private String screen;
 	private Personaje personaje;
@@ -30,10 +32,15 @@ public class Main extends PApplet{
 	}
 
 	public void setup() {
-		screen = "register";
+		
+		controller = new Controller(this);
+		
+		screen = "level 1";
 		font = createFont("Anonymous Pro Bold", 12);
 		register = new Register(this);
 		leaderboard = new Leaderboard(this);
+		
+		controller.createGame();
 
 		plataformas=new ArrayList<Platform>();
 		plataformas2=new ArrayList<Platform>();
@@ -131,6 +138,7 @@ public class Main extends PApplet{
 				}
 			}
 			personaje.pintar();
+			controller.drawGame();
 			break;
 			
 		case "level 2":
