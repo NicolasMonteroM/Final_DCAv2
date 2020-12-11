@@ -42,18 +42,15 @@ public class Logic {
 			String [] players = lineString.split(",");
 			
 			for (int j = 0; j < players.length; j++) {
-
-
 				nickname = players[0];
 				score = Integer.parseInt(players[1]);
 				time = Integer.parseInt(players[2]);
 				date = players[3];
-				System.out.println(players[j]);
 
-				//System.out.println(playerList2.get(j));
 			}
 			
 			playerList2.add(new Player(nickname, score, time, date,app));
+			naturalOrder();
 		}
 		
 		
