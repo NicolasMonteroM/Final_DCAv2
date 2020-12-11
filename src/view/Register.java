@@ -16,7 +16,6 @@ public class Register {
 	private ControlP5 cp5;
 	private String nickname;
 	private boolean canStart = true, start = false;
-	private String[] inputs;
 
 
 	public Register(PApplet app) {
@@ -54,7 +53,8 @@ public class Register {
 			// System.out.println(nickname);
 
 			if (!nickname.equals("")) {
-				controller.newPlayer(nickname);
+				nickname = cp5.get(Textfield.class, "Nickname").getText();
+				//controller.newPlayer(nickname); 						// Dijo no quiero y no funciona
 				cp5.get(Textfield.class, "Nickname").setText("");
 				canStart = true;
 

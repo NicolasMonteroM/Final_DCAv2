@@ -1,5 +1,10 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -14,10 +19,30 @@ public class Logic {
 	private ArrayList<Enemie> enemies;
 	private ArrayList<Enemie> enemies2;
 	private ArrayList<Enemie> enemies1;
+	private File dataPuntajes;
+	private String [] arrayStrings;
 
 	public Logic(PApplet app) {
 		this.app = app;
+		arrayStrings = app.loadStrings("../data/dataPuntajes.txt");
+		playerList = new ArrayList<Player>();
+		
+		for (int i = 0; i < arrayStrings.length; i++) {
+			String lineString = arrayStrings[i];
+			String [] arrayWord = lineString.split(" ");
+			Player p = null;
+		}
+		
+		for (int i = 0; i < arrayStrings.length; i++) {
+			String[] player = arrayStrings[i].split(","); // separar por comas
+			String nickname = player[0];
+			int score = Integer.parseInt(player[1]);
+			int time = Integer.parseInt(player[2]);
+			String date = player[3];
+			playerList.add(new Player(nickname, score, time, date));
 
+		}
+		
 		enemies = new ArrayList<Enemie>();
 		enemies2 = new ArrayList<Enemie>();
 		enemies1 = new ArrayList<Enemie>();
@@ -61,12 +86,14 @@ public class Logic {
 	public void drawEnemies() {
 
 		for (Enemie e : enemies1) {
-			
+
 			e.drawEnemie();
 
 		}
 
 	}
+
+	
 
 	public void naturalOrder() {
 		Collections.sort(playerList);
@@ -74,18 +101,11 @@ public class Logic {
 	}
 
 	public void drawLeaders() {
-		if (playerList.size() != 0) {
-			for (int i = 0; i < playerList.size(); i++) {
-				app.fill(0);
-				app.text(playerList.get(i).getScore() + "                               " + playerList.get(i).getTime()
-						+ "                              " + playerList.get(i).getDate()
-						+ "                              ", 100, 100 + (i * 20));
-			}
-		}
-
-		else {
-			System.out.println("Vacio");
+		
+		for (int i = 0; i < playerList.size(); i++) {
+			app.fill(0);
+			app.text(playerList.get(i).getNickname() + "                                    " + playerList.get(i).getScore() + "                                    " + 
+			playerList.get(i).getTime() + "                                    " + playerList.get(i).getDate(), 100,100 + (i * 20));
 		}
 	}
-
 }

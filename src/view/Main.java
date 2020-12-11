@@ -35,7 +35,7 @@ public class Main extends PApplet{
 		
 		controller = new Controller(this);
 		
-		screen = "level 1";
+		screen = "register";
 		font = createFont("Anonymous Pro Bold", 12);
 		register = new Register(this);
 		leaderboard = new Leaderboard(this);
@@ -174,6 +174,7 @@ public class Main extends PApplet{
 			leaderboard.drawScreen();
 			leaderboard.getCp5().show();
 			screen = leaderboard.changeScreen();
+			controller.drawLeaders();
 
 
 			break;

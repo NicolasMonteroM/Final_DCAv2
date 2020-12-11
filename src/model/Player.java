@@ -19,6 +19,18 @@ public class Player implements Comparable<Player> {
 		score = 0;
 	}
 	
+	public Player(String nicknames, int scores, int times, String dates) {
+
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 	public String getDate() {
 		dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
